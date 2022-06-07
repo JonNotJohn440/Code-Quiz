@@ -4,9 +4,9 @@ var time = questions.length * 15;
 var timerId;
 
 // variables to reference DOM elements
-var questionsEl = document.getElementById("questions");
+var questionsEl = document.getElementById("quiz");
 var timerEl = document.getElementById("time");
-var choicesEl = document.getElementById("choices");
+var choicesEl = document.getElementById("options");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
@@ -35,7 +35,7 @@ function getQuestion() {
   var currentQuestion = questions[currentQuestionIndex];
 
   // update title for current question
-  var titleEl = document.getElementById("question-title");
+  var titleEl = document.getElementById("quiz-title");
   titleEl.textContent = currentQuestion.title;
 
   // clear out old question choices
@@ -45,7 +45,7 @@ function getQuestion() {
   currentQuestion.choices.forEach(function(choice, i) {
     // create new button for each choice
     var choiceNode = document.createElement("button");
-    choiceNode.setAttribute("class", "choice");
+    choiceNode.setAttribute("class", "options");
     choiceNode.setAttribute("value", choice);
 
     choiceNode.textContent = i + 1 + ". " + choice;
@@ -129,7 +129,7 @@ function saveHighscore() {
   if (initials !== "") {
     // get saved scores from localstorage, or if not any, set to empty array
     var highscores =
-      JSON.parse(window.localStorage.getItem("highscores")) || [];
+      JSON.parse(window.localStorage.getItem("scores")) || [];
 
     // format new score object for current user
     var newScore = {
@@ -138,18 +138,18 @@ function saveHighscore() {
     };
 
     // save to localstorage
-    highscores.push(newScore);
-    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+    scores.push(newScore);
+    window.localStorage.setItem("scores", JSON.stringify(scores));
 
     // redirect to next page
-    window.location.href = "highscores.html";
+    window.location.href = "scores.html";
   }
 }
 
 function checkForEnter(event) {
   // "13" is the enter key
   if (event.key === "Enter") {
-    saveHighscore();
+    saveScore();
   }
 }
 

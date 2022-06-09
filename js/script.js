@@ -13,17 +13,18 @@ const quizArr = [
     
 ]
 const startQuizHandler =(event) => {
-console.log(event)
-startTimer()
-}
-const startTimer =() => {
-interval = setInterval(() => {
-    countdown-- 
-    if (countdown <= 0){
-        endGame()
-    }
-    $timer.textContent=countdown
-},1000)
+    startQuiz()
+// console.log(event)
+// startTimer()
+// }
+// const startTimer =() => {
+// interval = setInterval(() => {
+//     countdown-- 
+//     if (countdown <= 0){
+//         endGame()
+//     }
+//     $timer.textContent=countdown
+// },1000)
 }
 
 const endGame =() => {
@@ -49,5 +50,4 @@ const endGame =() => {
 
 
 
-const $startButton = $start.children[0];
-$startButton.addEventListener("click",startQuizHandler)
+$start.addEventListener("click",startQuizHandler)

@@ -15,8 +15,8 @@ var feedbackEl = document.getElementById("feedback");
 
 function startQuiz() {
   // hide start screen
-  var startScreenEl = document.getElementById("start-screen");
-  startScreenEl.setAttribute("class", "hide");
+  // var startScreenEl = document.getElementById("start-screen");
+  // startScreenEl.setAttribute("class", "hide");
 
   // Reveal questions
   questionsEl.removeAttribute("class");
@@ -128,7 +128,7 @@ function saveHighscore() {
   // make sure value wasn't empty
   if (initials !== "") {
     // get saved scores from localstorage, or if not any, set to empty array
-    var highscores =
+    var scores =
       JSON.parse(window.localStorage.getItem("scores")) || [];
 
     // format new score object for current user
